@@ -1,7 +1,7 @@
 import cozmo
 from flask import Flask
 app = Flask(__name__)
-
+from datetime import datetime
 
 
 def cozmo_say(robot: cozmo.robot.Robot):
@@ -21,6 +21,20 @@ def cozmo_pick(robot: cozmo.robot.Robot, obj, in_parallel, num_retries=1):
 
 def command_center_drive(funct, arg1=None, arg2=None, arg3=None):
     cozmo.run_program(drive[funct](arg1,arg2,arg3))
+
+def generate_code(test):
+    truename = datetime.now().day
+    filename = 'cozmo_generated_program_'+str(truename)+'.py'
+    with open(filename, 'w') as f:
+        f.write('import datetime \n'+test+'\n print("hello there")\n print("General Kenobi")')
+
+    import cozmo_generated_program_9 as p
+
+    p.printing()
+
+
+
+
 drive  = {
     'MOVE': cozmo_say,
     'TURN': cozmo_turn,
@@ -38,3 +52,4 @@ def hello_world():
 #if __name__ == "__main__":
  #   app.run(host="0.0.0.0")
 
+generate_code('def printing():\n')
