@@ -2,4 +2,9 @@ extends layout.pug
 
 block appContent
         h1 Fernando Gonzalez
+        h2 You have: #{money}
+        if !recTransaction
+            p No recent transactions.
+        else 
+            p Recent transaction.
         button Logout

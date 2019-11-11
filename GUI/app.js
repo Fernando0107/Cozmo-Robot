@@ -11,7 +11,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/account', (req, res) => {
-    res.render('account');
+    res.render('account', {
+        money: '$7,000',
+        recTransaction: false
+    });
 });
 
 
