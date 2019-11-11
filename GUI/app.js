@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000
+const port = 8080
 
 app.set('view engine', 'pug');
 
@@ -15,6 +15,11 @@ app.get('/account', (req, res) => {
         money: '$7,000',
         recTransaction: false
     });
+});
+
+app.get('/todo', (req, res) => {
+    res.render('todoList');
+
 });
 
 

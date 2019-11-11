@@ -2,7 +2,7 @@
     "name": "gui",
     "version": "1.0.0",
     "description": "Simple Web UI for love-my-robot",
-    "main": "server.js",
+    "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js"
@@ -13,6 +13,7 @@
         "consolidate": "^0.15.1",
         "curl": "^0.1.4",
         "express": "^4.17.1",
+        "pug": "^2.0.4",
         "swig": "^1.4.2"
     }
 }
