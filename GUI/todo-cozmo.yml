@@ -1,0 +1,11 @@
+movements:
+  "move right",
+  "move left",
+  "go forward",
+  "go back"
+sounds:
+  "say",
+  "sing"
+show:
+  "smile",
+  "blink"
