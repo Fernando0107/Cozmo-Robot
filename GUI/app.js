@@ -23,6 +23,11 @@ app.get('/todo', (req, res) => {
 
 });
 
+app.get('/nav', (req, res) => {
+    res.render('navbar');
+
+});
+
 const todo = fs.readFileSync('./todo-cozmo.yml', 'utf8')
 
 app.get('/card', (req, res) => {
