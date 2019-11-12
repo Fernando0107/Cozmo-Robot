@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs');
-var favicon = require('serve-favicon');
-var path = require('path');
+const timestamp = require('time-stamp');
+
 const app = express();
 const port = 8080
+
+
+console.log('TimeStamp:\n',timestamp('YYYY/MM/DD mm:ss'));
 
 app.set('view engine', 'pug');
 
