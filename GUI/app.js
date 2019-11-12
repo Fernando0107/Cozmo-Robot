@@ -32,12 +32,13 @@ app.get('/nav', (req, res) => {
     res.render('navbar');
 
 });
-
-let todo_string = fs.readFileSync('./todo-cozmo.json', 'utf8')
-let todo_json = JSON.parse(todo_string)
+let todo_string = fs.readFileSync('./todo-cozmo.json', 'utf8');
+let todo_json = JSON.parse(todo_string);
 
 app.get('/cards', (req, res) => {
     res.render('cards', {todo : todo_json});
+
+});
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
