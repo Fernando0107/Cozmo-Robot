@@ -33,11 +33,11 @@ app.get('/nav', (req, res) => {
 
 });
 
-const todo = fs.readFileSync('./todo-cozmo.yml', 'utf8')
+let todo_string = fs.readFileSync('./todo-cozmo.json', 'utf8')
+let todo_json = JSON.parse(todo_string)
 
-app.get('/card', (req, res) => {
-    res.render('card');
-});
+app.get('/cards', (req, res) => {
+    res.render('cards', {todo : todo_json});
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
