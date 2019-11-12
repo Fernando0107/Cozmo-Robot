@@ -1,0 +1,16 @@
+{
+    "move" : [
+        "right",
+        "left",
+        "forward",
+        "back"
+    ],
+    "sounds": [
+        "say",
+        "sing"
+    ],
+    "show" : [
+        "smile",
+        "blink"
+    ]
+}
