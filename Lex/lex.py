@@ -2,8 +2,10 @@ import cozmo
 from flask import Flask
 app = Flask(__name__)
 from datetime import datetime
+import os
 
-
+robot = cozmo.robot.Robot
+measures = cozmo.util
 def cozmo_say(robot: cozmo.robot.Robot):
     robot.say_text("Hello Flask").wait_for_completed()
 
@@ -22,23 +24,22 @@ def cozmo_pick(robot: cozmo.robot.Robot, obj, in_parallel, num_retries=1):
 def command_center_drive(funct, arg1=None, arg2=None, arg3=None):
     cozmo.run_program(drive[funct](arg1,arg2,arg3))
 
-def generate_code(test):
-    truename = datetime.now().day
-    filename = 'cozmo_generated_program_'+str(truename)+'.py'
-    with open(filename, 'w') as f:
-        f.write('import datetime \n'+test+'\n print("hello there")\n print("General Kenobi")')
+def generate_code(test, arg1,arg2):
+    truename = datetime.now().minute
+    with open('cozmo_generated_program.py', 'w') as f:
+        f.write('import datetime \nimport cozmo\nclass transpiled:\n def __init__(self, robot: cozmo.robot.Robot, cube: cozmo.objects.LightCube):\n self.robot = robot\n self.cube = cube\n \ndef cozmo_program(robot: cozmo.robot.Robot):\n '+test+'('+arg1+','+arg2+')'+'\ncozmo.run_program(cozmo_program)')
 
-    import cozmo_generated_program_9 as p
-
-    p.printing()
-
+    #import cozmo_generated_program as p
+    
+    os.rename(r'cozmo_generated_program.py', r'cozmo_generated_program'+str(truename)+r'.py')
 
 
-
+#revisar COZMO.UTIL para sacar medidas y datos
 drive  = {
-    'MOVE': cozmo_say,
+    'SAY': 'robot.say_text',
     'TURN': cozmo_turn,
     'PICK': cozmo_pick,
+    'DRIVE': 'robot.drive_straight',
     'DRIVE_OFF': cozmo_off
 }
 
@@ -52,4 +53,4 @@ def hello_world():
 #if __name__ == "__main__":
  #   app.run(host="0.0.0.0")
 
-generate_code('def printing():\n')
+generate_code(drive['DRIVE'], 'cozmo.util.distance_mm(200.0)', 'cozmo.util.Speed(50.0)')
