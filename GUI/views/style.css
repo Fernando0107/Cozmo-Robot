@@ -47,8 +47,10 @@
 .hide {
     display: none;
 }
-.back{
+#back{
     margin-top:20%;
+    margin-left:40%;
+    position: fixed;
     color: grey;
     text-align: center;
     font-size: 50px;
