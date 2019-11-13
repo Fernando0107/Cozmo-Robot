@@ -1,14 +1,94 @@
-extends layout.pug
+include layout.pug
 
 block appContent
-    .wrapper
-    nav#sidebar
-        .sidebar-header
-        h3 Bootstrap Sidebar
-        ul.table-bordered
-            li move
-            
-            //poner block aca
-            li sounds
-            //poner block aca
-            li show
+    style.
+        .sidebar-nav{
+            float: left;
+            width: 15%;
+            min-height: 650px;
+            border: solid black;
+            margin-left: 3%;
+            margin-top: 2%;
+            font-size: 30px;
+            text-align: center;
+            background-color:pink;
+
+        }
+        .move{
+            width: 35%;
+            min-height: 650px;
+            border: solid blue;
+            background-color: skyblue;
+            text-align: center;
+            font-size: 30px
+        }
+        #move{
+            margin-left: 30%;
+            margin-top: 2%;
+            border: solid blue
+        }
+        .sound{
+            border: solid orange;
+            background-color: yellow;
+            text-align: center;
+            width: 35%;
+            min-height: 650px;
+            font-size: 30px
+        }
+        #sound{
+
+        }
+        .show{
+            border: solid red;
+            background-color: pink;
+            text-align: center;
+            font-size: 30px
+        }
+        .hide {
+            display: none;
+        }
+
+    script.
+        var shown = false
+        window.addEventListener('load', () => {
+            document.getElementById('moveBtn').addEventListener('click', remove)
+        });
+        
+
+        function remove() {
+            if (shown) {
+                document.getElementById('move').classList.add('hide')
+            } else {
+                document.getElementById('move').classList.remove('hide')
+            }
+            shown = !shown
+        }
+        
+    table.sidebar-nav
+        tr
+            td.move#moveBtn Mover
+        tr
+            td.sound Sonido
+        tr
+            td.show Mostrar pantalla
+
+    div.todo
+        table#move.move.hide
+            tr
+                td 
+                    h2 #{todo.move[0]}
+                td
+                    h2 #{todo.move[1]}
+            tr
+                td 
+                    h2 #{todo.move[2]}
+                td
+                    h2 #{todo.move[3]}
+    
+    div.todo
+        table#sound.sound.hide
+            tr
+                td 
+                    h2 #{todo.sounds[0]}
+                td
+                    h2 #{todo.sounds[1]}
