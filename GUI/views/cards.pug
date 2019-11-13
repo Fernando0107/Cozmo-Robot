@@ -1,65 +1,46 @@
 include layout.pug
 
 block appContent
-    style.
-        .sidebar-nav{
-            float: left;
-            width: 15%;
-            min-height: 650px;
-            border: solid black;
-            margin-left: 3%;
-            margin-top: 2%;
-            font-size: 30px;
-            text-align: center;
-            background-color:pink;
-
-        }
-        .move{
-            width: 35%;
-            min-height: 650px;
-            border: solid blue;
-            background-color: skyblue;
-            text-align: center;
-            font-size: 30px
-        }
-        #move{
-            margin-left: 30%;
-            margin-top: 2%;
-            border: solid blue
-        }
-        .sound{
-            border: solid orange;
-            background-color: yellow;
-            text-align: center;
-            width: 35%;
-            min-height: 650px;
-            font-size: 30px
-        }
-        #sound{
-
-        }
-        .show{
-            border: solid red;
-            background-color: pink;
-            text-align: center;
-            font-size: 30px
-        }
-        .hide {
-            display: none;
-        }
+    style
+        include style.css
 
     script.
         var shown = false
         window.addEventListener('load', () => {
-            document.getElementById('moveBtn').addEventListener('click', remove)
+            document.getElementById('moveBtn').addEventListener('click', removeMove)
+            document.getElementById('soundBtn').addEventListener('click', removeSound)
+            document.getElementById('showBtn').addEventListener('click', removeShow)
         });
         
 
-        function remove() {
+        function removeMove() {
             if (shown) {
                 document.getElementById('move').classList.add('hide')
             } else {
                 document.getElementById('move').classList.remove('hide')
+                document.getElementById('sound').classList.add('hide')
+                document.getElementById('show').classList.add('hide')
+            }
+            shown = !shown
+        }
+        function removeSound() {
+            if (shown) {
+                document.getElementById('sound').classList.add('hide')
+            } else {
+                document.getElementById('sound').classList.remove('hide')
+                document.getElementById('move').classList.add('hide')
+                document.getElementById('show').classList.add('hide')
+            }
+            shown = !shown
+        }
+        function removeShow() {
+            if (shown) {
+                document.getElementById('show').classList.add('hide')
+            } else {
+                document.getElementById('move').classList.add('hide')
+                document.getElementById('sound').classList.add('hide')
+                document.getElementById('show').classList.remove('hide')
+                
             }
             shown = !shown
         }
@@ -68,12 +49,12 @@ block appContent
         tr
             td.move#moveBtn Mover
         tr
-            td.sound Sonido
+            td.sound#soundBtn Sonido
         tr
-            td.show Mostrar pantalla
+            td.show#showBtn Mostrar pantalla
 
-    div.todo
-        table#move.move.hide
+    div
+        table#move.move.todo.hide
             tr
                 td 
                     h2 #{todo.move[0]}
@@ -85,10 +66,20 @@ block appContent
                 td
                     h2 #{todo.move[3]}
     
-    div.todo
-        table#sound.sound.hide
+    div
+        table#sound.sound.todo.hide
             tr
                 td 
                     h2 #{todo.sounds[0]}
                 td
                     h2 #{todo.sounds[1]}
+    
+    div
+        table#show.show.todo.hide
+            tr
+                td 
+                    h2 #{todo.show[0]}
+                td
+                    h2 #{todo.show[1]}
+
+    .back Crea tu codigo aqui :)

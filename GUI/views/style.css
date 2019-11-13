@@ -1,0 +1,55 @@
+.sidebar-nav{
+    float: left;
+    width: 15%;
+    min-height: 650px;
+    border: solid black;
+    margin-left: 3%;
+    margin-top: 2%;
+    font-size: 30px;
+    text-align: center;
+    background-color:pink;
+
+}
+.todo{
+    width: 35%;
+    min-height: 600px;
+    text-align: center;
+    font-size: 30px;
+    border: solid;
+}
+.move{
+    border: solid blue;
+    background-color: skyblue;
+}
+#move{
+    margin-left: 30%;
+    margin-top: 2%;
+    border: solid blue
+}
+.sound{
+    border: solid orange;
+    background-color: yellow;
+}
+#sound{
+    margin-left: 30%;
+    margin-top: 2%;
+    border: solid yellow
+}
+.show{
+    border: solid red;
+    background-color: pink;
+}
+#show{
+    margin-left: 30%;
+    margin-top: 2%;
+    border: solid red
+}
+.hide {
+    display: none;
+}
+.back{
+    margin-top:20%;
+    color: grey;
+    text-align: center;
+    font-size: 50px;
+}
